@@ -13,6 +13,10 @@
 
 
 
+#define TLog(fmt, ...) NSLog((@"%d: "fmt), __LINE__, ##__VA_ARGS__)
+
+
+
 @interface ViewController ()
 
 @end
@@ -27,22 +31,16 @@
 {
     [super viewDidLoad];
     
-    NSMutableArray *labels = @[].mutableCopy;
+    NSUserDefaults *u = NSUserDefaults.standardUserDefaults;
     
-    CGFloat scrollHeight = 0.f;
-    for (UIView *label in labels) {
-        scrollHeight += label.bounds.size.height;
-    }
+    [DKUserDictionary setAutoSynchronize:NO];
     
-    UIScrollView *scrollView = UIScrollView.new;
-    scrollView.frame = (CGRect) {
-        .size = self.view.bounds.size
-    };
-    scrollView.contentSize = (CGSize) {
-        .width = scrollView.bounds.size.width,
-        .height = scrollHeight
-    };
-    [self.view addSubview:scrollView];
+    // test cache because cannot test in XCTest
+    DKUserDictionary.d[@"name"] = @"daisuke";
+    TLog(@"%@", [self doTest:([[u objectForKey:@"name"] isEqualToString:@"daisuke"])]);
+    
+    DKUserDictionary.d[@"name"] = nil;
+    TLog(@"%@", [self doTest:(![u objectForKey:@"name"])]);
 }
 
 
@@ -60,6 +58,12 @@
     DKUserDictionary.number[@"init"] = init;
 }
 
+
+
+- (NSString *)doTest:(BOOL)okOrNot
+{
+    return okOrNot ? @"Ok" : @"!!!! Miss";
+}
 
 
 @end
