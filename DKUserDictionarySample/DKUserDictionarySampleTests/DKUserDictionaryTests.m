@@ -183,6 +183,72 @@
     XCTAssertNil(DKUserDictionary.URL[keyURL]);
 }
 
+/*!
+ 
+ integer, setInteger
+ 
+ */
+- (void)testInteger
+{
+    NSString *keyInteger = @"accessorTestInteger";
+    XCTAssertEqual(DKUserDictionary._integer(keyInteger), 0);
+    DKUserDictionary._setInteger(keyInteger, 100);
+    XCTAssertEqual(DKUserDictionary._integer(keyInteger), 100);
+    DKUserDictionary._setInteger(keyInteger, 200);
+    XCTAssertEqual(DKUserDictionary._integer(keyInteger), 200);
+    DKUserDictionary._setInteger(keyInteger, 0);
+    XCTAssertEqual(DKUserDictionary._integer(keyInteger), 0);
+}
+
+/*!
+ 
+ float, setFloat
+ 
+ */
+- (void)testFloat
+{
+    NSString *keyFloat = @"accessorTestFloat";
+    XCTAssertEqual(DKUserDictionary._float(keyFloat), 0.0);
+    DKUserDictionary._setFloat(keyFloat, 100.f);
+    XCTAssertEqual(DKUserDictionary._float(keyFloat), 100.f);
+    DKUserDictionary._setFloat(keyFloat, 200.f);
+    XCTAssertEqual(DKUserDictionary._float(keyFloat), 200.f);
+    DKUserDictionary._setFloat(keyFloat, 0.f);
+    XCTAssertEqual(DKUserDictionary._float(keyFloat), 0.f);
+}
+
+/*!
+ 
+ double, setDouble
+ 
+ */
+- (void)testDouble
+{
+    NSString *keyDouble = @"accessorTestDouble";
+    XCTAssertEqual(DKUserDictionary._double(keyDouble), 0.f);
+    DKUserDictionary._setInteger(keyDouble, 100.f);
+    XCTAssertEqual(DKUserDictionary._double(keyDouble), 100.f);
+    DKUserDictionary._setInteger(keyDouble, 200.f);
+    XCTAssertEqual(DKUserDictionary._double(keyDouble), 200.f);
+    DKUserDictionary._setInteger(keyDouble, 0.f);
+    XCTAssertEqual(DKUserDictionary._double(keyDouble), 0.f);
+}
+
+/*!
+ 
+ BOOL, setBOOL
+ 
+ */
+- (void)testBOOL
+{
+    NSString *keyBOOL = @"accessorTestBOOL";
+    XCTAssertEqual(DKUserDictionary._bool(keyBOOL), NO);
+    DKUserDictionary._setBool(keyBOOL, YES);
+    XCTAssertEqual(DKUserDictionary._bool(keyBOOL), YES);
+    DKUserDictionary._setBool(keyBOOL, NO);
+    XCTAssertEqual(DKUserDictionary._bool(keyBOOL), NO);
+}
+
 
 
 - (void)testAutoSynchronize

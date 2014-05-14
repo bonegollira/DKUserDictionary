@@ -95,6 +95,16 @@ forKeyedSubscript:(id<NSCopying>)key;
 + (id<DKUserDictionaryData>)data;
 + (id<DKUserDictionaryURL>)URL;
 
++ (NSInteger(^)(NSString *))_integer;
++ (float(^)(NSString *))_float;
++ (double(^)(NSString *))_double;
++ (BOOL(^)(NSString *))_bool;
+
++ (void(^)(NSString *, NSInteger))_setInteger;
++ (void(^)(NSString *, float))_setFloat;
++ (void(^)(NSString *, double))_setDouble;
++ (void(^)(NSString *, BOOL))_setBool;
+
 + (void)setAutoSynchronize:(BOOL)yesOrNo;
 
 
@@ -104,6 +114,16 @@ forKeyedSubscript:(id<NSCopying>)key;
 
 
 #pragma mark protocol
+
+@protocol DKUserDictionaryInteger <NSObject>
+
+- (void (^)(int))setObject:(NSString *)string
+         forKeyedSubscript:(id<NSCopying>)key;
+
+@end
+
+
+////
 
 @protocol DKUserDictionaryString <NSObject>
 

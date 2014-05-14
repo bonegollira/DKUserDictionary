@@ -41,6 +41,11 @@
     
     DKUserDictionary.d[@"name"] = nil;
     TLog(@"%@", [self doTest:(![u objectForKey:@"name"])]);
+    
+    NSLog(@"%d", (int)DKUserDictionary._integer(@"test"));
+    NSLog(@"%d", (int)[u objectForKey:@"test"]);
+    
+    DKUserDictionary.data[@"data"] = [@"" dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 

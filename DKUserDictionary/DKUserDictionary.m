@@ -346,6 +346,70 @@ forKeyedSubscript:(id<NSCopying>)key
 
 
 
++ (NSInteger(^)(NSString *))_integer
+{
+    return ^(NSString *key) {
+        return [DKUserDictionary.number[key] integerValue];
+    };
+}
+
++ (void (^)(NSString *, NSInteger))_setInteger
+{
+    return ^(NSString *key, NSInteger _integer) {
+        DKUserDictionary.number[key] = @(_integer);
+    };
+}
+
+
+
++ (float(^)(NSString *))_float
+{
+    return ^(NSString *key) {
+        return [DKUserDictionary.number[key] floatValue];
+    };
+}
+
++ (void (^)(NSString *, float))_setFloat
+{
+    return ^(NSString *key, float _float) {
+        DKUserDictionary.number[key] = @(_float);
+    };
+}
+
+
+
++ (double(^)(NSString *))_double
+{
+    return ^(NSString *key) {
+        return [DKUserDictionary.number[key] doubleValue];
+    };
+}
+
++ (void (^)(NSString *, double))_setDouble
+{
+    return ^(NSString *key, double _double) {
+        DKUserDictionary.number[key] = @(_double);
+    };
+}
+
+
+
++ (BOOL(^)(NSString *))_bool
+{
+    return ^(NSString *key) {
+        return [DKUserDictionary.number[key] boolValue];
+    };
+}
+
++ (void (^)(NSString *, BOOL))_setBool
+{
+    return ^(NSString *key, BOOL _bool) {
+        DKUserDictionary.number[key] = @(_bool);
+    };
+}
+
+
+
 /*!
  
  @setter
